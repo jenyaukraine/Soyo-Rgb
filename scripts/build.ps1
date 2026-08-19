@@ -8,7 +8,10 @@ if (-not $auraSdk) {
     throw 'Set AURA_SERVICE_LIB to the official AuraServiceLib.dll path supplied with the ASUS Aura SDK.'
 }
 
-Copy-Item -LiteralPath $auraSdk -Destination (Join-Path $projectRoot 'AuraServiceLib.dll') -Force
+$localInterop = Join-Path $projectRoot 'AuraServiceLib.dll'
+if ([IO.Path]::GetFullPath($auraSdk) -ne [IO.Path]::GetFullPath($localInterop)) {
+    Copy-Item -LiteralPath $auraSdk -Destination $localInterop -Force
+}
 $compiler = @(
     'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe',
     'C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe'

@@ -19,7 +19,7 @@ Realtime RGB synchronization for Windows PCs with a SOYO ARGB controller, Razer 
 | --- | --- | --- |
 | SOYO/ASRock LED Dongle | HID | Tested with two ARGB channels |
 | Razer Huntsman V2 | OpenRGB | OpenRGB SDK server on port `6742` |
-| Razer Basilisk V3 Pro | OpenRGB | Competing Synapse lighting processes are suppressed |
+| Razer Basilisk V3 Pro | OpenRGB | Uses Direct mode without stopping Synapse services |
 | Lexar ARES DDR5 RGB | ASUS Aura SDK / ENE | Tested with two 8-LED modules |
 
 Other devices may work but are not yet tested.
@@ -66,9 +66,9 @@ The tested controller accepts 8-byte HID reports:
 
 This implementation updates channels 1 and 2. Hardware revisions may use a different protocol; test cautiously.
 
-## Razer conflict handling
+## Razer compatibility
 
-Razer Synapse Quick Effects can overwrite colors sent by OpenRGB. While SOYO RGB Studio runs, it terminates the competing `RazerAppEngine` and Chroma Connect lighting processes. Core Razer driver services remain running. Synapse can be opened again after exiting the app.
+The app never terminates Razer processes or services. It uses OpenRGB Direct mode so audio devices, profiles, DPI, and button mappings provided by Synapse remain available. If Synapse Quick Effects visually compete with OpenRGB, disable only the Quick Effect in Synapse rather than closing Synapse itself.
 
 ## Security
 
