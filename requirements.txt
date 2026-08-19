@@ -1,0 +1,2 @@
+hidapi==0.14.0.post4
+openrgb-python==0.3.6

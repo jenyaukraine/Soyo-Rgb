@@ -1,0 +1,12 @@
+node_modules/
+dist/
+__pycache__/
+*.py[cod]
+AuraReceiver.exe
+AuraServiceLib.dll
+.DS_Store
+Thumbs.db
+*.log
+.env
+.vscode/
+.idea/

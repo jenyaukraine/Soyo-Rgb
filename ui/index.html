@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><title>Chroma Sync Studio</title></head>
+<link rel="stylesheet" href="capture.css"><body><div class="shell">
+  <aside><div class="brand"><span class="orb"></span><div><b>CHROMA</b><small>SYNC STUDIO</small></div></div>
+    <nav><button class="active">◈ <span>Studio</span></button><button>⌁ <span>Devices</span></button><button>▱ <span>Profiles</span></button><button>⚙ <span>Settings</span></button></nav>
+    <div class="side-foot"><span class="dot online"></span><div><b>Engine ready</b><small>Local control</small></div></div>
+  </aside>
+  <main><header style="-webkit-app-region:drag"><div><h1>Lighting Studio</h1><p>One atmosphere. Every device.</p></div><div class="window" style="-webkit-app-region:no-drag"><button onclick="window.rgb.minimize()">—</button><button onclick="window.rgb.close()">×</button></div></header>
+    <section class="hero"><div class="aurora"></div><div class="hero-copy"><span class="pill">LIVE COMPOSER</span><h2 id="effect-title">Music</h2><p>Screen color driven by system audio.</p><button id="master" class="master on"><span>●</span> SYNC ACTIVE</button></div><div class="rig"><div class="ram r1"></div><div class="ram r2"></div><div class="fan f1"></div><div class="fan f2"></div><div class="fan f3"></div></div></section>
+    <div class="grid"><section class="panel controls"><div class="panel-head"><div><h3>Effect</h3><p>Choose the motion of your setup</p></div><span id="fps">20 FPS</span></div>
+      <div class="effects"><button data-effect="static"><i>●</i>Static</button><button data-effect="breathing"><i>◉</i>Breathing</button><button data-effect="spectrum"><i>✺</i>Spectrum</button><button data-effect="wave"><i>≈</i>Wave</button><button data-effect="screen"><i>▣</i>Screen</button><button class="selected" data-effect="music"><i>♫</i>Music</button></div>
+      <div id="capture" class="capture visible"><video id="capture-preview" autoplay muted playsinline></video><canvas id="capture-canvas" width="64" height="36" hidden></canvas><div><b id="capture-state">Starting screen + audio…</b><select id="capture-source" hidden></select><small>Realtime screen color + system audio peaks</small></div></div>
+      <div class="sliders"><label id="speed-control" hidden>Speed <output id="speed-out">55%</output><input id="speed" type="range" min="10" max="100" value="55"></label><label>Brightness <output id="bright-out">80%</output><input id="brightness" type="range" min="0" max="100" value="80"></label></div>
+      <div class="colors" id="base-color" hidden><span>Base color</span><input id="color" type="color" value="#8b5cf6"><code id="hex">#8B5CF6</code></div>
+      <div class="colors" id="screen-color" hidden><span>Captured color</span><i id="screen-swatch"></i><code id="screen-hex">#000000</code></div>
+    </section>
+    <section class="panel devices"><div class="panel-head"><div><h3>Devices</h3><p>Hardware connection status</p></div><button id="refresh">↻</button></div>
+      <div class="device" data-device="razer"><div class="dev-icon green">R</div><div><b>Razer Chroma</b><small>Keyboard + mouse</small></div><label class="switch"><input id="use-razer" type="checkbox" checked><span></span></label></div>
+      <div class="device" data-device="soyo"><div class="dev-icon purple">S</div><div><b>SOYO ARGB</b><small>Channels 1 + 2</small></div><label class="switch"><input id="use-soyo" type="checkbox" checked><span></span></label></div>
+      <div class="device offline" data-device="ares"><div class="dev-icon blue">A</div><div><b>Lexar ARES</b><small id="ares-note">2 modules · 16 LEDs</small></div><span class="status-dot"></span><label class="switch"><input id="use-ares" type="checkbox" checked><span></span></label></div>
+    </section></div>
+    <div id="toast">Ready</div>
+  </main></div><script src="app.js"></script></body></html>
