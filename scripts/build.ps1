@@ -15,7 +15,10 @@ $compiler = @(
 ) | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 if (-not $compiler) { throw '.NET Framework C# compiler was not found.' }
 
-& $compiler /nologo /target:exe /out:(Join-Path $projectRoot 'AuraReceiver.exe') /reference:(Join-Path $projectRoot 'AuraServiceLib.dll') (Join-Path $projectRoot 'AuraReceiver.cs')
+$receiverOutput = Join-Path $projectRoot 'AuraReceiver.exe'
+$interopAssembly = Join-Path $projectRoot 'AuraServiceLib.dll'
+$receiverSource = Join-Path $projectRoot 'AuraReceiver.cs'
+& $compiler /nologo /target:exe "/out:$receiverOutput" "/reference:$interopAssembly" $receiverSource
 if ($LASTEXITCODE -ne 0) { throw 'AuraReceiver compilation failed.' }
 
 Push-Location $projectRoot
